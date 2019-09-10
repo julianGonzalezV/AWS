@@ -1,0 +1,12 @@
+1) conceptos
+https://docs.aws.amazon.com/es_es/lambda/latest/dg/welcome.html
+
+2) Tutorial de implementación
+https://docs.aws.amazon.com/es_es/toolkit-for-eclipse/v1/user-guide/lambda-tutorial.html
+
+3) 
+https://docs.aws.amazon.com/es_es/lambda/latest/dg/deploying-lambda-apps.html
+
+
+Creación de funciones de Lambda con Java
+https://docs.aws.amazon.com/es_es/lambda/latest/dg/java-programming-model.html

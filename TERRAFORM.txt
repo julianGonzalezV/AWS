@@ -1,0 +1,88 @@
+1) Introducción:
+https://www.terraform.io/intro/index.html
+
+Terraform  es una herramienta para la construcción, cambio y versionamiento  de infraestructura (en este caso en la nube)
+de manera eficiente y segura
+Se basa en archivos de configuración que describen los componentes requeridos para ejecutar una app en un proveedor de nube x
+
+
+Instalacion:
+https://learn.hashicorp.com/terraform/getting-started/install
+
+Get started :
+https://learn.hashicorp.com/terraform/getting-started/build
+Al conjunto de archivos para describir la infraestructura se conoce como Configuración Terraform 
+
+Instalar Aws CLI:https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
+1 debe tener python instalado
+
+
+2 crear las variables de entorno python o seleccionar en el instalador que las cree automátocamente 
+D:\Usuarios\juligove\AppData\Local\Programs\Python\Python37-32\Scripts\
+D:\Usuarios\juligove\AppData\Local\Programs\Python\Python37-32\
+
+3 instale aws  cli  ($ pip3 install awscli --upgrade --user)
+
+4 configure la vaariable de entorno para que le funcione los comandos de aws
+D:\Usuarios\juligove\AppData\Roaming\Python\Python37\Scripts
+
+5 ejecute aws --version
+6 configure las credenciales de la cuenta amazon 
+el logueo como root es https://console.aws.amazon.com/console/home
+ Configuracion . https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
+Tipos de acceso:
+Como usuario root 
+Con credeciales IAM amazon identity access management: La recomendada es que se configure por IAM:
+As a best practice, do not use the AWS account root user access keys for any task where it's not required
+Es decir que al crear un IAM user lo que va a pasar es que este se va a poder loguear 
+con el usuari opero con la ontraseña de IAM y para persmisos más especiales el usuario
+root deberá hacerlo con sus credenciales
+
+1) Crear usuario admon
+https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html
+
+Profiles: archivos(con configuracione como las credenciales)  divididosen secciones que pueden ser referenciados por su nombre
+
+Administrator
+userAm@zon1
+claves de acceso: (se crean desde el aws console y la opcio nde generar credenciales)
+Access key ID,Secret access key
+AKIARQUOOQZF2OY3YYET,1EnMf9G1kwq/4IpW4cpjtlIbnPSoML4coIP9kM5s
+
+::::::::::::::::AHORA SI EL 1ER COMANDO ::::::::::::::::
+terraform init:
+terraform version: version actual
+terraform apply: muestra el plan de ejecución que va a ejecutar (antes de la version 0.11 de terraform 
+se conocía como terraform plan), si sale un error es como hacer el build y ver errores de sintaxis
+antes de ser ejecutados
+
+Si hay error entonces se le da NO de lo contrario YES.
+
+si al darle yes le sale el error::::::::::::::
+ OptInRequired: You are not subscribed to this service
+ S/ Al parecer se dá porque cada vez que uno hace la peticion de un servicio nuevo ejemplo ec2 o lambdas
+ entonces amazon se lo habilitará 24 horas después.
+ 
+::::::::::::::::Archivo terraform.tfstate::::::::::::::::::::::::
+Muy importante porque guarda los id de los recursos creados, por ejemplo:
+{
+  "version": 4,
+  "terraform_version": "0.12.8",
+  "serial": 1,
+  "lineage": "bbfd8a1c-9196-4840-1851-1f1a2bd17f31",
+  "outputs": {},
+  "resources": []
+}
+ 
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+
+
+
+
+
+
+

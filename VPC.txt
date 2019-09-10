@@ -1,0 +1,18 @@
+
+
+Amazon VPC es la capa de red de Amazon EC2 Amazon Elastic Compute Cloud 
+(Amazon EC2: que ofrece la capacidad informatica, servers etc) 
+1)https://docs.aws.amazon.com/es_es/vpc/latest/userguide/what-is-amazon-vpc.html
+2) https://docs.aws.amazon.com/es_es/vpc/latest/userguide/VPC_Subnets.html#vpc-subnet-basics
+3) 
+
+va a ser una vpc con acceso(predeterminada) a internet o no predeterminada??
+o tambien una vpc no predeterminada y le daremos una ip publica??
+
+
+Nos interesa éste apartado: Acceso a redes corporativas o domésticas
+Se logra utilizando una conexión de AWS Site-to-Site VPN de IPsec 
+
+
+Site-to-Site VPN constan de una gateway privada virtual asociada a su VPC y de una gateway 
+de cliente que se encuentra en su centro de datos.
