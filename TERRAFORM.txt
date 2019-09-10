@@ -1,3 +1,8 @@
+
+Palabras claves: 
+ami : Amazon machine images
+
+
 1) Introducción:
 https://www.terraform.io/intro/index.html
 
@@ -50,9 +55,9 @@ Access key ID,Secret access key
 AKIARQUOOQZF2OY3YYET,1EnMf9G1kwq/4IpW4cpjtlIbnPSoML4coIP9kM5s
 
 ::::::::::::::::AHORA SI EL 1ER COMANDO ::::::::::::::::
-terraform init:
-terraform version: version actual
-terraform apply: muestra el plan de ejecución que va a ejecutar (antes de la version 0.11 de terraform 
+terraform init--->
+terraform version---> version actual
+terraform apply ---> muestra el plan de ejecución que va a ejecutar (antes de la version 0.11 de terraform 
 se conocía como terraform plan), si sale un error es como hacer el build y ver errores de sintaxis
 antes de ser ejecutados
 
@@ -78,10 +83,27 @@ Muy importante porque guarda los id de los recursos creados, por ejemplo:
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+Destroy Infrastructure::::
+(para eliminar la infra creda en en la cuenta, ya que genera cobros adicionales)
+comando:
+terraform destroy---> muestra que infraestructura va a eliminar y también solcitida una autorizacion (escribiento yes para enviar)
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Resource Dependencies:::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
+xxxxxxxxxxx:::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+xxxxx:::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
