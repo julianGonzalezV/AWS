@@ -19,11 +19,10 @@ resource "aws_lambda_function" "example1_js" {
 }
 
 # IAM(Identity and Access Management) role which dictates what other AWS services the Lambda function
-# may access, es decir que evita/restringe que use otros servicios que no se encuentren acà 
+# may access, es decir que evita/restringe que use otros servicios que no se encuentren en esta seccion
+# note como se usa eof para crear un bloque de String en varias lineas
 resource "aws_iam_role" "lambda_exec" {
   name = "serverless_example_lambda"
-  
-# note como se usa eof para crear un bloque de String en varias lineas
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -39,4 +38,15 @@ resource "aws_iam_role" "lambda_exec" {
   ]
 }
 EOF
+}
+# Se trata de que el lambda que creemos de permisos de invocacion a esta al api gateway 
+resource "aws_lambda_permission" "apigw" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = "${aws_lambda_function.example1_js.function_name}"
+  principal     = "apigateway.amazonaws.com"
+
+  # The "/*/*" portion grants access from any method on any resource
+  # within the API Gateway REST API.
+  source_arn = "${aws_api_gateway_rest_api.api_ex1.execution_arn}/*/*"
 }

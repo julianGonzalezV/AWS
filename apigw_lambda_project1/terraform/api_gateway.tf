@@ -50,7 +50,7 @@ resource "aws_api_gateway_integration" "lambda_root" {
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = "${aws_lambda_function.example.invoke_arn}"
+  uri                     = "${aws_lambda_function.example1_js.invoke_arn}"
 }
 
 # finalmente se crea el despliegue del api gateway
@@ -62,5 +62,9 @@ resource "aws_api_gateway_deployment" "example_deployment1" {
 
   rest_api_id = "${aws_api_gateway_rest_api.api_ex1.id}"
   stage_name  = "test"
+}
+
+output "base_url" {
+  value = "${aws_api_gateway_deployment.example_deployment1.invoke_url}"
 }
 

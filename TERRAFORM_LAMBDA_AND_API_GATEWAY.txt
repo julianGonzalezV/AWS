@@ -43,6 +43,11 @@ See api_gateway.tf in ..\AWS_my_github\apigw_lambda_project1\terraform\api_gatew
 :::::::::::::Allowing API Gateway to Access Lambda:::::::::::::::::::::::::
 Se trata de que el lambda que creemos de permisos de invocacion a esta al api gateway 
 
+Error:
+Error: Error creating IAM Role serverless_example_lambda: AccessDenied: User: arn:aws:iam::104451704395:user/Administrator is not authorized to perform: iam:CreateRole on resource: arn:aws:iam::104451704395:role/serverless_example_lambda with an explicit deny
+        status code: 403, request id: d9fd8507-d4cf-11e9-8389-c36c0929cbf3
+		
+Solución:
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
