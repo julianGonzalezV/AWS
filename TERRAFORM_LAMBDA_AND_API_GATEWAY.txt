@@ -2,7 +2,7 @@
 1) Read ambout amazon lambdas
 2) Read about amazon api-gateway
 
-Real source:
+Real source(Tuto que seguì):
 https://learn.hashicorp.com/terraform/aws/lambda-api-gateway
 
 Other reading:
@@ -13,4 +13,25 @@ https://medium.com/galvanize/aws-lambda-deployment-with-terraform-24d36cc86533
 > La lambda la puedo construir(escribir) en diferentes lenguajes de programaciòn  directamente en amazon o subir mis 
 Micro-Servicios allì.
 
- 
+> Para proyectos que deben compilarse com java se debe tener en cuenta que terraform no es una herramienta para hacer build 
+por ello recomienda usar CI System (continous integration System) para dicho build y que produzca el zip necesario.
+Para luego subirlo a amazon S3 bucket (Simple Storage Service) (investigar como ..puede ser con Jhonny ocampo :))
+Para el proyecto como lo vamos a compilar?:
+
+Preguntar a David si por temas de compilaciòn es mejor usar Js o python para crear la lambda?
+
+>  
+
+:::::::::::::::::::::::comandos ejecutados::::::::::::::::
+1) zip ../lambda_ex1 MainJs.js (crea el zip que se subirà al s3)
+# de ser necesario 1.1) "aws configure" para cambiar las credenciales
+2) aws s3api create-bucket --bucket=terraform-serverless-example --region=us-east-1  (crea un bucket llamado terraform-serverless-example)
+3) aws s3 cp lambda_ex1.zip s3://terraform-serverless-example/v1.0.0/lambda_ex1.zip (suble el zip qie creamos en el punto 1)
+	Note el versionamiento que crearà una carpeta  por versiòn
+	
+4) Create the lambda function with terrafor (see lambda.tf file in ..\AWS_my_github\apigw_lambda_project1\terraform)
+5) terraform init
+6) terraform apply
+7) $ aws lambda invoke --region=us-east-1 --function-name=ServerlessExample output.txt (invocar la function creada con aws lambdas)
+---hasta acà quedò la lambda creada :) :) :) :) :) :) :) :) :) :)
+--AHORA COMO EXPONEMOS ESA LAMBDA A UN FRONT POR EJEMPLO 
