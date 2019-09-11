@@ -49,7 +49,6 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-gr
 Profiles: archivos(con configuracione como las credenciales)  divididosen secciones que pueden ser referenciados por su nombre
 
 Administrator
-userAm@zon1
 claves de acceso: (se crean desde el aws console y la opcio nde generar credenciales)
 
 

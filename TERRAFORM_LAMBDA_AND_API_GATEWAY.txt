@@ -1,0 +1,16 @@
+
+1) Read ambout amazon lambdas
+2) Read about amazon api-gateway
+
+Real source:
+https://learn.hashicorp.com/terraform/aws/lambda-api-gateway
+
+Other reading:
+https://medium.com/galvanize/aws-lambda-deployment-with-terraform-24d36cc86533
+
+
+> La dinàmica es implementar la plicaciòn en una o màs lambdas y exponer estas mediante un API Gateway de amazon
+> La lambda la puedo construir(escribir) en diferentes lenguajes de programaciòn  directamente en amazon o subir mis 
+Micro-Servicios allì.
+
+ 
