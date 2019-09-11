@@ -35,3 +35,21 @@ Preguntar a David si por temas de compilaciòn es mejor usar Js o python para cr
 7) $ aws lambda invoke --region=us-east-1 --function-name=ServerlessExample output.txt (invocar la function creada con aws lambdas)
 ---hasta acà quedò la lambda creada :) :) :) :) :) :) :) :) :) :)
 --AHORA COMO EXPONEMOS ESA LAMBDA A UN FRONT POR EJEMPLO 
+R/ Con Amazon API Gateway!!! :) 
+
+See api_gateway.tf in ..\AWS_my_github\apigw_lambda_project1\terraform\api_gateway.tf
+
+
+:::::::::::::Allowing API Gateway to Access Lambda:::::::::::::::::::::::::
+Se trata de que el lambda que creemos de permisos de invocacion a esta al api gateway 
+
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+
+
+
+
