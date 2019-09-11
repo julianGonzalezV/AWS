@@ -95,13 +95,105 @@ Resource Dependencies:::::::::::::::::::::
 
 
 
-xxxxxxxxxxx:::::::::::::::::::::
-
+Provision:::::::::::::::::::::https://learn.hashicorp.com/terraform/getting-started/provision
+En caso de que se requiera hacer configuraciones adicionales(ejecutar un shell script, subir imágenes)
+ a la imagen que usemos entonces 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
-xxxxx:::::::::::::::::::::
+Input Variables:::::::::::::::::::::https://learn.hashicorp.com/terraform/getting-started/variables
+ejemplo:
+variable "region" {
+  default = "us-east-1"
+}
+
+para evitar el hard coding se pueden crear variables en los archivos .tf , por ejemplo al inicio del archivos
+tambien pueden existir archivos generales con extensió tfvars
+
+# implicitly by using brackets [...]
+variable "cidrs" { default = [] }
+
+# explicitly
+variable "cidrs" { type = list }
+cidrs = [ "10.0.0.0/16", "10.1.0.0/16" ]
+
+Maps:
+variable "amis" {
+  type = "map"
+  default = {
+    "us-east-1" = "ami-b374d5a5"
+    "us-west-2" = "ami-4b32be2b"
+  }
+}
+
+resource "aws_instance" "example" {
+  ami           = var.amis[var.region]
+  instance_type = "t2.micro"
+}
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Output Variables:::::::::::::::::::::https://learn.hashicorp.com/terraform/getting-started/outputs
+Son variables que deseamos mostrar al hacer apply de algun archivo terraform que cree una infraestructura. Por ejemplo 
+nos gustaría saber acerda de  load balancer IP, VPN address, etc.
+output "ip" {
+  value = aws_eip.ip.public_ip
+}
+
+$ terraform output ip --> para visualizar una variable tipo output en consola, en este caso se llama ip
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Modules:::::::::::::::::::::https://learn.hashicorp.com/terraform/getting-started/modules
+
+Up to this point, we've been configuring Terraform by editing Terraform configurations directly. 
+As our infrastructure grows, this practice has a few key problems: a lack of organization, 
+a lack of reusability, and difficulties in management for teams.
+
+ to treat pieces of infrastructure as a black box.
+
+Modules documentation:
+https://www.terraform.io/docs/modules/index.html
+
+
+Existe modulos con configuraciones base para aws y demás providers, estos se encuentran en el 
+Terraform Registry (https://registry.terraform.io/)
+
+Ejemplo:
+terraform {
+  required_version = "0.11.11"
+}
+
+provider "aws" {
+  access_key = "AWS ACCESS KEY"
+  secret_key = "AWS SECRET KEY"
+  region     = "us-east-1"
+}
+
+module "consul" {
+# source indica de donde nos descargaremos el modulo
+# la fuente puede ser cualquiera Git, Mercurial, HTTP, and local files
+  source      = "hashicorp/consul/aws"
+  num_servers = "3"
+}
+
+Bacano que access_key y secret_key puedan estar como variables de ambiente
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::Remote State Storage :::::::::::::::::::::::::::::::::
+https://learn.hashicorp.com/terraform/getting-started/remote
+
+Indica como correr terraform en un ambiente remoto, que es precisamente como es en la realidad
+con los ambientes de pdn en la nube
+
+la idea es aplicar la carateristica conocida como REMOTE BACKENDS que permite usar un espacion de almacenamiento 
+compartido, así que cada miembro de un equipo pueda usar terraform para aplicar la misma infraestructura
+
+https://www.terraform.io/docs/cloud/getting-started/index.html
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

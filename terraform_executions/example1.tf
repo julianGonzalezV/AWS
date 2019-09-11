@@ -1,9 +1,17 @@
 # provider se usa para definir el proveedor de nube , PUEDEN EXISTIR varios bloques de provider = "xx"
 # para el caso en que la configuración terraform esté compuesta por multiples proveedores 
+
+
+# super util para evitar el famoso hard-coding
+variable "region" {
+  default = "us-east-1"
+}
+
+
 provider "aws" {
 # el profile hace referencia al archivo de configuracion en %UserProfile%\.aws\credentials
   profile    = "default"
-  region     = "sa-east-1"
+  region     = var.region
 }
 
 # New resource for the S3 bucket our application will use.
