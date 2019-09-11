@@ -51,8 +51,7 @@ Profiles: archivos(con configuracione como las credenciales)  divididosen seccio
 Administrator
 userAm@zon1
 claves de acceso: (se crean desde el aws console y la opcio nde generar credenciales)
-Access key ID,Secret access key
-AKIARQUOOQZF2OY3YYET,1EnMf9G1kwq/4IpW4cpjtlIbnPSoML4coIP9kM5s
+
 
 ::::::::::::::::AHORA SI EL 1ER COMANDO ::::::::::::::::
 terraform init--->
