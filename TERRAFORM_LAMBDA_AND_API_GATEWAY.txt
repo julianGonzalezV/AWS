@@ -26,6 +26,9 @@ Preguntar a David si por temas de compilaciòn es mejor usar Js o python para cr
 1) zip ../lambda_ex1 MainJs.js (crea el zip que se subirà al s3)
 # de ser necesario 1.1) "aws configure" para cambiar las credenciales
 2) aws s3api create-bucket --bucket=terraform-serverless-example --region=us-east-1  (crea un bucket llamado terraform-serverless-example)
+Error: The bucket namespace is shared by all users of the system
+Solución: colocar un nombre unico ya que eso se comparte global algo asi como jag-terraform-serverless-example1 
+
 3) aws s3 cp lambda_ex1.zip s3://terraform-serverless-example/v1.0.0/lambda_ex1.zip (suble el zip qie creamos en el punto 1)
 	Note el versionamiento que crearà una carpeta  por versiòn
 	
