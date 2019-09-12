@@ -2,12 +2,16 @@ provider "aws" {
   region = "us-east-1"
 }
 
+# Note como no agregamos ningun valor quemado, en este caso es super util para que desde consola de comandos
+# Podamos intercambiar las versiones que deseamos
+variable "app_version" {
+}
 resource "aws_lambda_function" "example1_js" {
   function_name = "ServerlessExample"
 
   # The bucket name as created earlier with "aws s3api create-bucket"
-  s3_bucket = "terraform-serverless-example"
-  s3_key    = "v1.0.0/lambda_ex1.zip"
+  s3_bucket = "jag-terraform-serverless-example1"
+  s3_key    = "v${var.app_version}/lambda_ex1.zip"
 
   # "MainJs" is the filename within the zip file (MainJs.js) and "handler"
   # is the name of the property under which the handler function was

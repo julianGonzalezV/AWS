@@ -29,7 +29,7 @@ Preguntar a David si por temas de compilaciòn es mejor usar Js o python para cr
 Error: The bucket namespace is shared by all users of the system
 Solución: colocar un nombre unico ya que eso se comparte global algo asi como jag-terraform-serverless-example1 
 
-3) aws s3 cp lambda_ex1.zip s3://terraform-serverless-example/v1.0.0/lambda_ex1.zip (suble el zip qie creamos en el punto 1)
+3) aws s3 cp lambda_ex1.zip s3://jag-terraform-serverless-example1/v1.0.0/lambda_ex1.zip (suble el zip que creamos en el punto 1)
 	Note el versionamiento que crearà una carpeta  por versiòn
 	
 4) Create the lambda function with terrafor (see lambda.tf file in ..\AWS_my_github\apigw_lambda_project1\terraform)
@@ -50,14 +50,32 @@ Error:
 Error: Error creating IAM Role serverless_example_lambda: AccessDenied: User: arn:aws:iam::104451704395:user/Administrator is not authorized to perform: iam:CreateRole on resource: arn:aws:iam::104451704395:role/serverless_example_lambda with an explicit deny
         status code: 403, request id: d9fd8507-d4cf-11e9-8389-c36c0929cbf3
 		
-Solución:
-
-
+Solución: revisar la politicas del usuario y ver si alguna politica le está negando el acceso a hacer x o y operación
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+»A New Version of the Lambda Function:::::::
+Cuando hacemos cambios en el código y necesitamos actualizar la lambda entonces:
+1) Realice los cambios necesario
+2) Actualice(regenerandolo de nuevo) el zip que se sube a amazon bucket, comando:
+	>zip ../lambda_ex1.zip main.js
+3) Suba el Zip como una nueva version (note la nueva carpeta v.1.0.1)
+	aws s3 cp lambda_ex1.zip s3://jag-terraform-serverless-example1/v1.0.1/lambda_ex1.zip
+4) Y que pasa con la version anterior?, como movernos entre versiones?
+R/ La version anterior queda hasta que la eliminemos, además si desea moverse entre versiones 
+debe crear una variable dentro del archivo terraform y desde consola intercambia tal como se muestra a continuación:
+	terraform apply -var="app_version=1.0.1" ó
+	terraform apply -var="app_version=1.0.0"
 
+»Destroy or Cleaning Up::::::::::::::::::::::::::::::::::::::::::
+$ terraform destroy -var="app_version=0.0.0"
 
+»Making Changes to the API Gateway:::::::
 
-
+Si requiere cambiar la configuración de api gateway entonces debe ser consciente que requiere actualizar el api
+mejor dicho un re-deploy, con éste comando hace ése redeploy
+terraform taint aws_api_gateway_deployment.example
+el comando indica que el objeto debe CREARSE de nuevo PERO los cambios no se dan hasta el próximo terraform apply command
+Es decir que primero se ejecuta el tain y luego terraform apply :) 
+::::::::::::::::::::::::::::::::::::::::::
 
 
