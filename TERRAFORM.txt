@@ -1,4 +1,10 @@
 
+Ruta o path de aprendizaje:
+https://learn.hashicorp.com/terraform
+
+Este manual abarca el "Getting Started - AWS"
+
+
 Palabras claves: 
 ami : Amazon machine images
 
@@ -195,6 +201,14 @@ https://www.terraform.io/docs/cloud/getting-started/index.html
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
+Siguientes lecturas:
+ El orden de lectura es 
+ 1-Este archivo
+ 2-Terraform Cloud - Team (opcional) https://learn.hashicorp.com/terraform/enterprise/tfc_intro
+ 3-Terraform Cloud - Governance https://learn.hashicorp.com/terraform/sentinel/sentinel-prereqs
+ 4-Developer https://learn.hashicorp.com/terraform/development/running-terraform-in-automation
+ 5-vaya al Archivo TERRAFORM_LAMBDA_AND_API_GATEWAY
 
 
 

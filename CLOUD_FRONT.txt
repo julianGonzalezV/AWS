@@ -1,0 +1,5 @@
+Fuente:
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
+
+se usa para incrementar los tiempos de respuesta a los usuarios en la red de contenidos dinámicos y estáticos de nuestra 
+app como html, css, images 

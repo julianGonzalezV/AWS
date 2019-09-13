@@ -1,0 +1,2 @@
+Fuente:
+https://www.terraform.io/docs/providers/aws/r/cloudfront_distribution.html

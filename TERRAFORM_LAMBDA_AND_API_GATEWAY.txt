@@ -1,9 +1,10 @@
-
+root rul  https://learn.hashicorp.com/terraform?track=aws#aws
 1) Read ambout amazon lambdas
 2) Read about amazon api-gateway
 
 Real source(Tuto que seguì):
 https://learn.hashicorp.com/terraform/aws/lambda-api-gateway
+
 
 Other reading:
 https://medium.com/galvanize/aws-lambda-deployment-with-terraform-24d36cc86533
